@@ -1,0 +1,45 @@
+<html>
+<head>
+	<title>regexp 方法</title>
+</head>
+<body>
+<script>
+	var pattern1 = /\d{5}/g;
+	console.log(pattern1.test("3894383")); //true
+	var pattern2 = /[cb]at/g;
+
+	var result2 = '';
+	
+	while(result2 = pattern2.exec('cbatdfcat')){
+		console.log(result2);
+	}
+
+	//分组匹配2012 google
+	var pattern3 = /(\d{4})\s(\w+)/;
+	var result3 = pattern3.exec('2012 google');
+	console.log(result3[0] + ',' + result3[1] + ',' + result3[2]); //2012 google,2012,google
+
+	var pattern4 = new RegExp("[cb]at",'g');
+	console.log(pattern4.test('dhjk')); //false
+	console.log(pattern4.test('bat')); //true
+
+	var text = "this is a short summer";
+	var pattern5 = /(.)hort/;
+	if (pattern5.test(text)){
+		console.log(RegExp.input); //this is a short summer
+		console.log(RegExp.lastMatch); //short
+		console.log(RegExp.lastParen);//s
+		console.log(RegExp.leftContext);//this is a 
+		console.log(RegExp.rightContext);//summer
+		
+
+	}
+
+
+
+
+
+</script>
+	
+</body>	
+</html>
