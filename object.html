@@ -1,0 +1,62 @@
+<html>
+<head>
+	<title>对象属性</title>
+</head>
+<body>
+	<script>
+	//读取访问器属性
+		var book = {
+			_year : 2014,
+			edition : 1
+		};
+		Object.defineProperty(book, "year", {
+			get : function(){
+				return this._year;
+			},
+			set : function(newYear){
+				if (newYear > 2014) {
+					this._year = newYear;
+					this.edition += newYear - 2014;
+				}
+			}
+		});
+
+			//可用如下方法
+		// book.__defineGetter__("year", function(){
+		// 	return this._year;
+		// });
+		// book.__defineSetter__("year", function(newYear){
+		// 	if (newYear > 2014){
+		// 		this._year = newYear;
+		// 		this.edition += newYear - 2014;
+		// 	}
+		// });
+
+		console.log(book.edition);
+		book.year = 2017;
+		console.log(book.edition);
+
+
+//定义多个属性 及读取
+		var person = {};
+		Object.defineProperties(person, {
+			age: {
+				writable: true,
+				value: 24
+			},
+			name: {
+				value: "ltt"
+			}
+		});
+		var descriptor = Object.getOwnPropertyDescriptor(person, "age");
+		console.log(descriptor);//Object {value: 24, writable: true, enumerable: false, configurable: false}
+		console.log(descriptor.value);
+
+
+
+
+
+
+	</script>
+</body>
+</html>

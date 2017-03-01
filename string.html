@@ -1,0 +1,42 @@
+<html>
+<head>
+	<title>String类型</title>
+</head>
+<body>
+	<script>
+		var stringObject = new String("hello world");
+		var stringValue = "hello world";
+		console.log(stringValue.length);//11
+
+		//字符方法
+		console.log(stringValue.charAt(1));//e
+		console.log(stringValue.charCodeAt(1));//101 是e的编码
+		console.log(stringValue[1]);//e
+
+		//字符串操作方法 concat(),slice(),substr(),substring()
+		var result1 = stringValue.concat("~~~~");
+		var result2 = stringValue.concat("~~~~" , "!");
+		console.log(result1 + "," + result2);//hello world~~~~,hello world~~~~!
+		console.log(stringValue + "~~~~");//hello world~~~~
+
+		console.log(stringValue.slice(3,7));//lo w
+		console.log(stringValue.substring(3,7));//lo w
+		console.log(stringValue.substr(3,7));//lo world
+
+		console.log(stringValue.indexOf("w"));
+		console.log(stringValue.lastIndexOf("w"));
+
+		var stringValue = "learn more hdskflse  kjdhssede";
+		var pos = stringValue.indexOf("e");
+		var position = [];
+		while(pos > -1){
+			debugger;
+			position.push(pos);
+			pos = stringValue.indexOf("e" , pos + 1);
+		}
+		console.log(position);
+
+
+	</script>
+</body>
+</html>
