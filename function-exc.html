@@ -60,5 +60,24 @@
 		sayColor.call(this);//red
 		var oSayColor = sayColor.bind(o);
 		oSayColor();//blue
+
+		function fn(n){
+			var result = [];
+			var temp ;
+			for (var i = 0; i < n; i++) {
+				temp = Math.floor(Math.random()*5+2);
+				if(result.indexOf(temp) < 0 ){
+					result.push(temp);
+				}else{
+ 					i--;
+				}
+			
+			}
+			return result;
+
+		}
+
+		var result = fn(5);
+		console.log(result);
 	</script>
 </body>
