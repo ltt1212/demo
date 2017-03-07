@@ -8,6 +8,44 @@
 	console.log(screenLeft);
 	console.log(screenTop);
 	window.moveTo(0,0);
+	// window.print();
+	// window.find();
+
+	//location
+
+	function getQueryURLS(urls){
+		location.assign(urls);
+		var qs = (location.search.length > 0 ? location.search.substring(1) : ""),
+			result = {},
+			items = qs.length ? qs.split("&") : [],
+			item = null,
+			name = null,
+			value = null,
+			i = 0,
+			len = items.length;
+		for (var i = 0; i < len; i++) {
+			item = items[i].split("=");
+			name = decodeURIComponent(item[0]);
+			value = decodeURIComponent(item[1]);
+			if(name.length){
+				result[name] = value;
+			}
+			return result;
+		}
+	}
+	// var result = getQueryURLS("localhost" + "/SplitAndCount/Search?json='hello'&key='why'");
+
+	//navigator
+	function hasPlugin(name){
+		var temp = name.toLowerCase();
+		for (var i = 0; i < navigator.plugins.length; i++) {
+			if(navigator.plugins[i].name.toLowerCase().indexOf(temp) >= 0){
+				return true;
+			}
+		}
+		return false;
+	}
+	console.log(hasPlugin("Native Client"));
 
 
 </script>
