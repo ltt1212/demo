@@ -1,9 +1,13 @@
 <html>
 <head>
 	<title>对象属性</title>
+	<script src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
 </head>
 <body>
+ <!-- <div id="ltt@163.com">hello</div> -->
 	<script>
+	// var result = $(#ltt\@163.com).text;
+	// console.log(result);
 		function Person(name,age,job){
 			this.name = name;
 			this.age = age;
@@ -71,6 +75,8 @@
 		var descriptor = Object.getOwnPropertyDescriptor(person, "age");
 		console.log(descriptor);//Object {value: 24, writable: true, enumerable: false, configurable: false}
 		console.log(descriptor.value);
+
+
 
 
 
