@@ -1,0 +1,99 @@
+<html>
+<head>
+	<title>闭包 与变量</title>
+</head>
+<body>
+<script>
+	function createFunction(){
+		var result = new Array();
+		for (var i = 0; i < 10; i++) {
+			result[i] = function(){
+				return i;
+			};
+		}
+		return result;
+	}
+	// createFunction();
+	var result = createFunction();
+	console.log(result[4]());//10
+
+	function createFunctions(){
+		var result = new Array();
+		for (var i = 0; i < 10; i++) {
+			result[i] = function(num){
+				return function(){
+					return num;
+				}
+			}(i);
+		}
+		return result;
+	}
+	var result1 =  createFunctions();
+	console.log(result1[2]());//2
+
+
+	var name = "The Window";
+　　var object = {
+　　　　name : "My Object",
+　　　　getNameFunc : function(){
+　　　　　　return function(){
+　　　　　　　　return this.name;
+　　　　　　};
+　　　　}
+　　};
+　　console.log(object.getNameFunc()());
+
+	var name = "The Window";
+	var object = {
+	　　name : "My Object",
+	　　getNameFunc : function(){
+	　　　　var that = this;
+	　　　　return function(){
+	　　　　　　return that.name;
+	　　　　};
+	　　}
+	};
+	console.log(object.getNameFunc()());
+
+	function countNum(num){
+		for (var i = 0; i < num; i++) {
+			console.log(i);
+		}
+		// var i;	//10
+		console.log(i);
+	}
+	countNum(10);
+	function outputNum(num){
+		(function(){
+			for (var i = 0; i < num; i++) {
+			console.log(i);
+		 	} 
+		 	console.log(i);
+		})();
+		
+	}
+	outputNum(10);
+
+	(function(){
+		var name = "";
+		Person = function(value){
+			name = value;
+		};
+
+		Person.prototype.getName = function(){
+			return name;
+		};
+		Person.prototype.setName = function(value){
+			name = value;
+		};
+	})();
+    var person1 = new Person("nick");
+    var person2 = new Person("mike");
+    console.log(person1.getName());
+    console.log(person2.getName());
+
+
+</script>
+	
+</body>	
+</html>
