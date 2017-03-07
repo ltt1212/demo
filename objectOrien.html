@@ -46,6 +46,41 @@
 		console.log("instance:" + instance.subProperty);
 		console.log("instance:" + instance.getSuperType());
 
+		function createAnother(original){
+			var clone = Object (original);
+			clone.sayHi = function(){
+				console.log("hi");
+			}
+			return clone;
+		}
+
+		function B(name){
+			this.name = name;
+			this.foot = [l,r];
+		}
+		B.prototype.sayName = function(){
+			console.log(this.name);
+		}
+		function A(name,color){
+			this.color = color;
+			B.call(this,name);
+		}
+
+		var prototype = Object(B.prototype);
+		prototype.construtor = A;
+		A.prototype = prototype;
+		B.prototype.sayColor = function(){
+			console.log(this.color);
+		}
+
+function object(o){
+    function F(){}
+    F.prototype = o;
+    return new F();
+} 
+var o = {};
+var d = object(o);
+
 
 </script>
 	
