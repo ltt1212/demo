@@ -69,15 +69,18 @@
     console.log(getA());
     console.log(run(a.getA));
     console.log(getA2.call(b));
+    var ccc = {c: 1};
 
       function d(){
       	console.log(this);
       }
+      d();
 
       function e(){
+      	
       	d();
       }
-      e.call({c:1});
+      e.call(ccc);
 </script>
 	
 </body>	
