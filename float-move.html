@@ -2,60 +2,65 @@
 <html>
 <head>
 <meta charset=" utf-8">
-<title>侧边栏展开收缩</title>
+<title></title>
 <style type="text/css">
-#thediv{
-  width:150px;
-  height:200px;
-  background:#999999;
-  position:absolute;
-  left:-150px;//div初始位置
-}
-span{
-  width:20px;
+body{
+  margin: 0;
+  border: 0;
+} 
+.float-container{
+  position: absolute;
+  width: 100%;
   height:100px;
-  line-height:23px;
-  background:#09C;
-  position:absolute;
-  right:-20px;
-  top:70px;
+  background-color: gray;
+  bottom: -100px;
+}
+.btn{
+  position: absolute;
+  top: 300px;
+  width: 60px;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  border: 1px solid gray;
 }
 </style>
 
 </head>
 <body>
-<div id="thediv">
-<span>侧边栏展开收缩</span>
-</div>
+  <div id="float-container" class="float-container"></div>
+  <div class="btn" id="btn">click</div>
 
 <script>
 window.onload=function(){
-  var odiv=document.getElementById('thediv');
-    odiv.onmousedown = function()
-    {
-        if(odiv.offsetLeft == 0)
-        {
-            startmove(-150, -10);
-        }
-        else
-        {
-            startmove(0, 10);
-        }
+  var floatContainer = document.getElementById("float-container");
+  var btn = document.getElementById("btn");
+  var timer;
+  var sHeight = document.documentElement.clientHeight;
+  console.log(sHeight);
+  console.log(floatContainer.offsetTop);
 
-    }
+  btn.onclick = function(){
+      if(floatContainer.offsetTop == sHeight){
+        startmove(sHeight-100,-10);
+      }else{
+        startmove(sHeight,10);
+      }
 
-var timer=null;
-function startmove(target,speed){
-  var odiv=document.getElementById('thediv');
-  clearInterval(timer);
-  timer=setInterval(function (){
-    if(odiv.offsetLeft==target){
-      clearInterval(timer);
-    }
-    else{    
-      odiv.style.left=odiv.offsetLeft+speed+'px';
-    }
-  },30)
+  }
+
+  function startmove(target,speed){
+    clearInterval(timer);
+    timer = setInterval(function (){
+      if(floatContainer.offsetTop == target){
+        clearInterval(timer);
+      }
+      else{    
+        floatContainer.style.top = floatContainer.offsetTop+speed+'px';
+      }
+    },30)
+  }
+
 }
 </script>
 </body>

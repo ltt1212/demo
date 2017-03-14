@@ -73,13 +73,13 @@
 			console.log(this.color);
 		}
 
-function object(o){
-    function F(){}
-    F.prototype = o;
-    return new F();
-} 
-var o = {};
-var d = object(o);
+		function object(o){
+		    function F(){}
+		    F.prototype = o;
+		    return new F();
+		} 
+		var o = {};
+		var d = object(o);
 
 
 </script>
