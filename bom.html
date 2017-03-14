@@ -46,8 +46,38 @@
 		return false;
 	}
 	console.log(hasPlugin("Native Client"));
+	console.log(hasPlugin("flash"));
 
+	var a = {
+		a : "haha",
+		getA : function(){
+			console.log(this.a)
+		}
+	};
+	var b = {
+		a : "hello"
+	}
+    
+    var getA = a.getA;
+    var getA2 = getA.bind(a);
 
+    function run(fn){
+    	fn()
+    }
+    
+    console.log(a.getA());
+    console.log(getA());
+    console.log(run(a.getA));
+    console.log(getA2.call(b));
+
+      function d(){
+      	console.log(this);
+      }
+
+      function e(){
+      	d();
+      }
+      e.call({c:1});
 </script>
 	
 </body>	

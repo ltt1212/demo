@@ -4,12 +4,26 @@
 </head>
 <body>
 	<div class="myDiv" id="div1" data-name="first-div" style="background: red;font-size:14px">hell</div>
+	<div class="myDiv1" id="div2" data-name="first-div1" style="background: red;font-size:14px">hell</div>
 
 <script>
 	var id = document.getElementById("div1");
 	console.log(id.getAttribute("data-name"));//first-div
 	console.log(id.getAttribute("style"));//background: red;font-size:14px
-	
+
+
+
+	var divs = document.getElementsByTagName("div");
+	console.log(divs);
+	console.log(divs[0]);
+	divs[0].innerHTML = "helo word";
+
+	var element = document.createElement("div");
+	element.className = "message";
+
+	var textNode = document.createTextNode("hello -y");
+	element.appendChild(textNode);
+	document.body.appendChild(element);
 
 
 </script>
