@@ -1,6 +1,11 @@
 <html>
 <head>
 	<title>DOM</title>
+	<style>
+		.myDiv{
+			width: 100px;
+		}
+	</style>
 </head>
 <body>
 	<div class="myDiv" id="div1" data-name="first-div" style="background: red;font-size:14px">hell</div>
@@ -24,6 +29,7 @@
 	var textNode = document.createTextNode("hello -y");
 	element.appendChild(textNode);
 	document.body.appendChild(element);
+	console.log(id.style.width);
 
 
 </script>

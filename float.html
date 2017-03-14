@@ -4,8 +4,8 @@
 	<title></title>
   <style>
     body{
-      margin: 0;
-      border: 0;
+    	margin: 0;
+      	overflow: hidden; 
     } 
     .float-container{
       position: absolute;
@@ -15,8 +15,7 @@
       transform: translateY(100%);
     }
     .float-content{
-      width: 100%;
-      height: 200px;
+      height: 200px; 
       margin: 20px;
       background-color: white ;
     }
@@ -54,8 +53,8 @@
       }
 
       function move(obj,target){  
-            obj.style.transition="transform 500ms ease-out";
-            obj.style.transform="translateY("+ target+"%)";        
+        obj.style.transition="transform 500ms ease-out";
+        obj.style.transform="translateY("+ target+"%)";        
       }
     </script>
   </body>
