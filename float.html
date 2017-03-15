@@ -2,6 +2,8 @@
 <html>
   <head>
 	<title></title>
+  
+
   <style>
     body{
       margin: 0;
@@ -12,7 +14,11 @@
       width: 100%;
       background-color: gray;
       bottom: 0;
+      transition: transform 500ms ease-out;
       transform: translateY(100%);
+    }
+    .hid{
+      transform: translateY(0%);
     }
     .float-content{
       width: 100%;
@@ -29,6 +35,8 @@
     }
  
   </style>
+  <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script src="floatPluguin.js"></script>
   </head>
   
   <body>
@@ -38,20 +46,29 @@
     <div class="btn" id="btn">click</div>
  
     <script type="text/javascript">
-      var floatContainer = document.getElementById("float-container");
-      var btn = document.getElementById("btn");
-      var isShow = false;
 
-      btn.onclick = function(){
-        if(!isShow){
-          move(floatContainer,0);
-          return isShow = ~isShow;
-        }else{
-          move(floatContainer,100);
-          return isShow = ~isShow;
-        }
+     $(document).ready(function () {
+            // $(".btn").floatLayer(".float-container");
+            $('.float-container').floatLayer({
+              $btn: $('.btn'),
+              keyEvent: 52  //键盘键 4
+            });
+      });
+
+      // var floatContainer = document.getElementById("float-container");
+      // var btn = document.getElementById("btn");
+      // var isShow = false;
+
+      // btn.onclick = function(){
+      //   if(!isShow){
+      //     move(floatContainer,0);
+      //     return isShow = ~isShow;
+      //   }else{
+      //     move(floatContainer,100);
+      //     return isShow = ~isShow;
+      //   }
         
-      }
+      // }
 
       function move(obj,target){  
             obj.style.transition="transform 500ms ease-out";
