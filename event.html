@@ -1,0 +1,45 @@
+<html>
+	<head></head>
+	<body>
+		<div class="btn" id="btn">click</div>
+		<ul id="lists">
+			<li id="li1">1</li>
+			<li id="li2">2</li>
+			<li id="li3">3</li>
+			<li id="li4">4</li>
+		</ul>
+
+		<script>
+			var btn = document.getElementById("btn");
+			// btn.addEventListener("click", cosoleT, false);
+			// btn.removeEventListener("click", cosoleT, false)
+			// btn.onclick = cosoleT;
+
+			var lists = document.getElementById("lists");
+			lists.addEventListener('click', cosoleT,false);
+
+
+			function cosoleT(event){
+				console.log(event.target);
+				console.log(event.type);//事件类型
+				console.log(event.bubbles);//事件冒泡
+				console.log(event.cancelable);//是否可以取消时间的默认行为
+				event.stopPropagation();//阻止事件冒泡
+			}
+
+			document.body.onclick = function(e){
+				console.log(e.target);
+				console.log(e.currentTarget);
+				console.log(this);
+				console.log(e.clientX +":" + e.clientY);//现对于视口的坐标
+				console.log(e.pageX +":" + e.pageY);
+				console.log(e.screenX +":" + e.screenY);//相对于屏幕的坐标
+			}
+			document.addEventListener("mousewheel", function(e){
+				console.log(e.wheelDelta);
+			}, false);
+		</script>
+
+
+	</body>
+</html>

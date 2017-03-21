@@ -1,0 +1,58 @@
+
+<script>
+	// for (var i = 1 ; i <= 10; i++){
+	// 	console.log(time(i));
+	// }
+	// function time(index){
+	// 	timer = setTimeout(function(){
+	// 		return index;
+	// 	},1000);
+
+	// }
+
+	// for (var i = 1 ; i <= 10; i++){
+	// 	time(i);
+	// }
+	// function time(index){
+	// 	setTimeout(function(){
+	// 		console.log(index);
+	// 	},1000 * index);
+	// }
+
+	for (var i = 1 ; i <= 10; i++){
+		(function(index){
+			setTimeout(function(){
+				console.log(index);
+			},1000 * index);
+		})(i);
+	}
+
+
+	// var j = 1;
+
+	// function print() {
+	// 	console.log(j++)
+	// 	if(j > 10) {
+	// 		return false;
+	// 	}
+	// 	setTimeout(print, 1000);
+	// }
+
+	// setTimeout(print, 1000)
+	// setInterval
+
+	// var k = 1;			// 增量基数
+	// var timerId = setInterval(function(){
+	// 	if(k > 10) {
+	// 		return clearInterval(timerId)
+	// 	}
+	// 	console.log(k);
+	// 	k++;
+
+	// },1000);
+
+	console.log(i);
+
+	
+
+</script>

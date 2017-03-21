@@ -1,0 +1,66 @@
+<html>
+	<head></head>
+	<body>
+		<ul>
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+			<li>5</li>
+		</ul>
+
+		<script>
+			var ul = document.getElementsByTagName("ul");
+			var lists = ul[0].getElementsByTagName("li");
+
+			// for (var i = 0; i < lists.length; i++) {
+			// 	lists[i].onclick = function () {
+			// 		// body...
+			// 		console.log(i);
+			// 	}
+			// }
+			// console.log(lists[4].innerHTML);
+			// lists[4].innerHTML = "6";
+
+			var origin = "12.1.15";
+			// console.log(new Array(6).join("0"));
+			console.log(rep2(origin, 8));
+
+			// function rep(ori){
+			// 	var splitArray = ori.split(".");
+			// 	var length = getL(splitArray);
+			// 	if(length > 0 ){
+			// 		for (var i = 0; i < length; i++) {
+			// 			splitArray.unshift("0");
+			// 		}
+			// 	}
+			// 	return splitArray;
+
+			// }
+
+			// function getL(arry){
+			// 	var length = 0;
+			// 	for (var i = 0; i < arry.length; i++) {
+			// 		length += arry[i].length 
+			// 	}
+			// 	return 6-length;
+			// }
+
+			function rep2(ori, l){
+				var spl  itStr = ori.split(".").join("");				
+				var length = splitStr.length;
+				if(length >= l){
+					return splitStr;
+				}else{
+					splitStr = new Array(l).join("0") + splitStr;
+					// splitStr = "000000" + splitStr;	
+					// return splitStr.substr(length,l);
+					return splitStr.slice(-l); 
+				}
+
+			}
+
+			rep2('1.1', 6);
+		</script>
+	</body>
+</html>
