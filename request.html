@@ -1,0 +1,36 @@
+<script>
+	function addUrlPara(url, name, value) {
+		// body...向现有的url末尾添加查询字符串
+		url = url + (url.indexOf("?") == -1 ? "?" :"&");
+		url += encodeURIComponent(name) + "=" + encodeURIComponent(value);
+		return url;
+	}
+
+	var url = addUrlPara("http:baidu.com", "name", "123");
+
+
+	function timer(){
+		var i = 0;
+		setInterval(function(){
+			console.log(i);
+			i++;
+		},1000);
+	}
+
+	function light(){
+		setTimeout(function(){
+			console.log("green");
+		},2000);
+		setTimeout(function(){
+			console.log("blue");
+		},5000);
+		setTimeout(function(){
+			console.log("red");
+		},6000);
+		setTimeout(light,6000);
+	}
+
+	timer();
+
+	light();
+</script>
