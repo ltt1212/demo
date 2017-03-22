@@ -1,0 +1,93 @@
+<html>
+	<head></head>
+	<body>
+		<input type="text" readonly disabled value="123456789">
+		<script>
+			//简单值
+			//对象 双引号
+			//数组
+			var book = {
+				title : "p j",
+				author : ["n c z"],
+				edition : 3,
+				year : 2011,
+
+				// toJSON : function(){
+				// 	return this.year;
+				// }
+
+				relaseDate : new Date(2011, 11, 1)
+			};
+			//stringify()把js对象序列化为json字符串
+			//parse()json字符串解析为js对象值
+
+			var jsonText = JSON.stringify(book);//"{"title":"p j","author":["n c z"],"edition":3,"year":2011,"relaseDate":"2011-11-30T16:00:00.000Z"}"
+			var jsonText1 = JSON.stringify(book, ["title", "edition"]);//"{"title":"p j","edition":3}"
+
+			var bookCopy = JSON.parse(jsonText, function(key, value){
+				if(key == "relaseDate"){
+					return new Date(value);
+				}else{
+					return value;
+				}
+
+			}); 
+			console.log(bookCopy.relaseDate.getFullYear());//2011
+			console.log(book.relaseDate.getFullYear());//2011
+
+
+			function getQueryURLS(urls){
+				location.assign(urls);
+				var qs = (location.search.length > 0 ? location.search.substring(1) : ""),
+					result = {},
+					items = qs.length ? qs.split("&") : [],
+					item = null,
+					name = null,
+					value = null,
+					i = 0,
+					len = items.length;
+				for (var i = 0; i < len; i++) {
+					item = items[i].split("=");
+					name = decodeURIComponent(item[0]);
+					value = decodeURIComponent(item[1]);
+					if(name.length){
+						result[name] = value;
+					}
+					return result;
+				}
+			}
+			// var result = getQueryURLS("localhost" + "/SplitAndCount/Search?json='hello'&key='why'");
+
+
+			// 绿灯每2秒亮一次 间隔3秒蓝灯亮 在间隔1秒红灯亮 循环进行
+			function timer(){
+				var i = 0;
+				setInterval(function(){
+					console.log(i);
+					i++;
+				},1000);
+			}
+
+			function light(x, y, z){
+				timer1 = setTimeout(function(){
+					console.log("green");
+
+				},x);
+				timer2 = setTimeout(function(){
+					console.log("blue");
+	
+				},x+y);
+				timer3 = setTimeout(function(){
+					console.log("red");
+
+				},x+y+z);				
+				setTimeout(light.bind(undefined, x,y,z), x+y+z);
+			}
+
+			timer();
+			light(2000, 3000, 1000);
+
+		</script>
+		
+	</body>
+</html>
