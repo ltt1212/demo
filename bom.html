@@ -13,27 +13,7 @@
 
 	//location
 
-	function getQueryURLS(urls){
-		location.assign(urls);
-		var qs = (location.search.length > 0 ? location.search.substring(1) : ""),
-			result = {},
-			items = qs.length ? qs.split("&") : [],
-			item = null,
-			name = null,
-			value = null,
-			i = 0,
-			len = items.length;
-		for (var i = 0; i < len; i++) {
-			item = items[i].split("=");
-			name = decodeURIComponent(item[0]);
-			value = decodeURIComponent(item[1]);
-			if(name.length){
-				result[name] = value;
-			}
-			return result;
-		}
-	}
-	// var result = getQueryURLS("localhost" + "/SplitAndCount/Search?json='hello'&key='why'");
+
 
 	//navigator
 	function hasPlugin(name){
@@ -81,6 +61,46 @@
       	d();
       }
       e.call(ccc);
+
+
+	function Person(name){
+		this.name = name;
+	 	this.friends = ["l", "m"];
+	}
+	Person.prototype.sayHi = function(){
+		console.log(this.name);
+	}
+	function Doctor(name){
+			this.caree = "doc";
+			Person.call(this, name);
+
+	}
+	inher(Doctor, Person);
+	// Doctor.prototype = object(Person);
+	// Doctor.prototype.constructor = Doctor;
+	Doctor.prototype.say = function(){};
+
+	function object(o){
+	    function F(){}
+	    F.prototype = o;
+	    return new F();
+	} 
+	function inher(sub, sup){
+		var prototype = Object(sup.prototype);
+		prototype.constructor = sub;
+		sub.prototype = prototype;
+	}
+
+	var x = new Doctor("k");
+	var y = new Doctor("t");
+	console.log(x.name);
+	console.log(y.name);
+	x.friends.push("n");
+
+	console.log(y.friends);
+	console.log(x.friends);
+
+
 </script>
 	
 </body>	
