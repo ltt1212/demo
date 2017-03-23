@@ -1,0 +1,104 @@
+1.基本数据类型
+	(1) string：
+			toString(), String(), "" + string;
+			substr(), slice(), substring();
+			charAt(), indexOf();
+			concat();
+	(2) number:
+			Number(), parseInt(), parseFloat();
+	(3) boolean
+	(4) null
+	(5) undefined
+
+2.引用类型
+	(1)Object
+		new Object(), 字面量
+	(2)Array
+		new Array(), []
+
+	(3)Data
+	(4)RegExp
+		new RegExp(), "";
+		pattern.test(),       pattern.exec() 输出[匹配项， 位置， 输入]
+	(5)Function
+  	(6)检测数据类型 typeof() 基本数据类型
+  			   		instanceof() 引用类型
+
+3.对象创建
+	(1)字面量
+		var person1 = {
+			name : "xiaomiing",
+			sayHi : function(){
+			}
+		}
+	(2)构造函数 
+	 	function Person(name){
+	 		this.name = name;
+	 		this.sayHi = function(){
+
+	 		}
+	 	}
+	 	var person1 = new Person("xm", 22);
+	 	var person2 = new Person("xl", 12);
+	 	person1和person2都是Person的实例，对sayHi方法进行了两次实例化。无法共享sayHi方法。
+	(3)原型模式
+		function Person(name){
+		 		
+		}
+		Person.prototype.name = name;
+		Person.prototype.friends = ["l", "m"];
+		Person.prototype.sayHi = function(){
+
+		}
+
+		var person1 = new Person("xm", 22);
+	 	var person2 = new Person("xl", 12);
+	 	person1.friends.push("k");  
+	 	此时 person2.friends = ["l", "m", "k"]
+	 	解决了构造函数模式方法不能共享的缺点，但是对于引用类型的属性由于共享出现问题。
+	(5)混杂模式 
+		function Person(name){
+			this.name = name;
+		 	this.friends = ["l", "m"];
+		}
+		Person.prototype.sayHi = function(){
+
+		}
+
+		将需要共享的放在原型对象上，实现共享。
+4.对象继承(原型链,将父类的一个实例作为子类的原型对象)
+	(1)原型继承
+		function Doctor(){
+			this.caree = "doc";
+		}
+		Doctor.prototype = new Person("f");
+		Doctor.prototype.constructor = Doctor;
+		Doctor.prototype.say = function(){};
+
+		Doctor的原型是Person的实例 具有Person的属性， 所以造成子类的原型共享了父类的属性
+	(2)组合继承
+		function Doctor(name){
+			Person.call(this, name); //继承属性
+			this.caree = "doc";
+		}
+		Doctor.prototype = new Person();
+		Doctor.prototype.constructor = Doctor;
+		Doctor.prototype.say = function(){};
+		挺好的   调用了两次父类构造函数
+	(3)寄生
+		function Doctor(){
+			this.caree = "doc";
+		}
+		Doctor.prototype = object(Person);
+		Doctor.prototype.constructor = Doctor;
+		Doctor.prototype.say = function(){};
+
+		function object(o){
+		    function F(){}
+		    F.prototype = o;
+		    return new F();
+		} 
+5.闭包
+	
+
+

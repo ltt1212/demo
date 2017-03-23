@@ -1,0 +1,64 @@
+<script>
+	if(window.XMLHttpRequest){//safari,ie7+
+		httpRequest = new XMLHttpRequest();
+	}else if(window.ActiveObject){
+		httpRequest = new ActiveObject("Microsoft.XMLHTTP");
+	}
+
+	httpRequest.onreadystatechange = function(){
+		//process the server response
+	}
+	httpRequest.open('GET', 'http://www.exap.org/some.file', true);
+	// httpRequest.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded'); //post data
+	httpRequest.send(null);
+
+	if (httpRequest.readyState === XMLHttpRequest.DONE) {
+    	// everything is good, the response is received
+	} else {
+	    // still not ready
+	}
+
+	if (httpRequest.status === 200) {
+	    // perfect!
+	    //httpRequest.responseText – returns the server response as a string of text
+	} else {
+	    // there was a problem with the request,
+	    // for example the response may contain a 404 (Not Found)
+	    // or 500 (Internal Server Error) response code
+	}
+
+
+	// an example
+	(function() {
+		var httpRequest;
+		document.getElementById("ajaxButton").onclick = function() { makeRequest('test.html'); };
+
+		function makeRequest(url) {
+		httpRequest = new XMLHttpRequest();
+
+		if (!httpRequest) {
+		  alert('Giving up :( Cannot create an XMLHTTP instance');
+		  return false;
+		}
+		httpRequest.onreadystatechange = alertContents;
+		httpRequest.open('GET', url);
+		httpRequest.send();
+		}
+
+		function alertContents() {
+		  try {
+		    if (httpRequest.readyState === XMLHttpRequest.DONE) {
+		      if (httpRequest.status === 200) {
+		        alert(httpRequest.responseText);
+		      } else {
+		        alert('There was a problem with the request.');
+		      }
+		    }
+		  }
+		  catch( e ) {
+		    alert('Caught Exception: ' + e.description);
+		  }
+		}
+	})();
+
+</script>

@@ -55,6 +55,28 @@
 		console.log(descriptor);//Object {value: 24, writable: true, enumerable: false, configurable: false}
 		console.log(descriptor.value);
 
+		function clone(obj){
+    			var resultObj = {};
+    			// resultObj = object(obj);
+    			resultObj = Object.create(obj);
+    			return resultObj;
+    		}
+    		function object(o){
+    			function F(){};
+    			F.prototype = o;
+    			return new F();
+    		}
+
+  		var a ={name : "a"};
+ 		var b =clone(a);
+   		console.log(b.name);
+  		a.name = "a1";
+   		console.log(b.name);
+   		b.name = "b";
+   		console.log(a.name);
+  		a.name ="a2";
+   		console.log(b.name);
+
 
 
 
