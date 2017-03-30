@@ -8,6 +8,7 @@
 			<li>4</li>
 			<li>5</li>
 		</ul>
+		<div class="btn" id="btn">click</div>
 
 		<script>
 			var ul = document.getElementsByTagName("ul");
@@ -25,6 +26,18 @@
 			var origin = "12.1.15";
 			// console.log(new Array(6).join("0"));
 			console.log(rep2(origin, 8));
+
+			var handle = {
+				message : "event handle",
+				handleClick : function(event){
+					console.log(this);
+					console.log(event.type);
+				}
+			}
+
+			var btn = document.getElementById("btn");
+			btn.addEventListener('click', handle.handleClick.bind(handle),false);
+
 
 			// function rep(ori){
 			// 	var splitArray = ori.split(".");
@@ -47,7 +60,7 @@
 			// }
 
 			function rep2(ori, l){
-				var spl  itStr = ori.split(".").join("");				
+				var splitStr = ori.split(".").join("");				
 				var length = splitStr.length;
 				if(length >= l){
 					return splitStr;
