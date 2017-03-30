@@ -61,4 +61,26 @@
 		}
 	})();
 
+	//订阅模式
+	var sellerObj = {};
+	sellerObj.lists = [];
+	sellerObj.listen = function(fn){
+		sellerObj.lists.push(fn);
+	}
+	sellerObj.trigger = function(){
+		for (var i = 0, fn; fn = this.lists[i++];) {
+			fn.apply(this, arguments);
+		}
+	}
+
+	sellerObj.listen(function(color, code){
+		console.log("颜色" + color);
+		console.log("尺码" + code);
+	});
+	sellerObj.listen(function(color, code){
+		console.log("颜色1" + color);
+		console.log("尺码1" + code);
+	});
+	sellerObj.trigger("red", "40");
+	sellerObj.trigger("blue", "30");
 </script>
