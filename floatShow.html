@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script src="http://libs.baidu.com/jquery/2.1.1/jquery.min.js"></script>
+		<script src="float.js"></script>
+	</head>
+	<body>
+		<div class="immediately">hello</div>
+
+
+	<script>
+		MaskShare(".immediately",{  
+		    imgSrc:"E:/demo/Penguins.jpg",  
+		    boxDomStyle:{  
+		        opacity:".9"  
+		    },  
+		    imgDomStyle:{  
+		        opacity:".8"  
+		    },  
+		    open:function(){  
+		        console.log("show");  
+		    },  
+		    close:function(){  
+		        console.log("close");  
+		    }  
+		}); 
+	</script>
+
+	</body>
+</html>
